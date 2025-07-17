@@ -1,112 +1,188 @@
-
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#c59880" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon.png" />
-  <title>Mi Paleta Otoño Cálido</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #fff8f0;
-      color: #333;
-      margin: 0;
-      padding: 1rem;
-      text-align: center;
-    }
-    h1 {
-      font-size: 1.6rem;
-    }
-    .palette-section {
-      margin: 2rem auto;
-    }
-    .circle {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-      gap: 10px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .color {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: inline-block;
-      position: relative;
-    }
-    .color:hover::after {
-      content: attr(data-name);
-      position: absolute;
-      top: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: white;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      white-space: nowrap;
-    }
-  </style>
-</head>
-<body>
-  <h1>Paleta Otoño Cálido</h1>
-  <p>Colores que me favorecen según mi estación personal</p>
-  <div class="palette-section">
-    <div class="circle">
-      <!-- Tonos tierra -->
-      <div class="color" style="background:#964B00" data-name="Terracota"></div>
-      <div class="color" style="background:#7C482B" data-name="Óxido"></div>
-      <div class="color" style="background:#5A3A22" data-name="Marrón cálido"></div>
-      <div class="color" style="background:#B87333" data-name="Cobre"></div>
-      <div class="color" style="background:#6A4E42" data-name="Chocolate"></div>
-      <div class="color" style="background:#CD7F32" data-name="Bronce"></div>
-      <!-- Verdes cálidos -->
-      <div class="color" style="background:#6B8E23" data-name="Oliva"></div>
-      <div class="color" style="background:#556B2F" data-name="Musgo"></div>
-      <div class="color" style="background:#9C8B3F" data-name="Verde dorado"></div>
-      <!-- Amarillos -->
-      <div class="color" style="background:#D4AF37" data-name="Dorado"></div>
-      <div class="color" style="background:#E1AD01" data-name="Mostaza"></div>
-      <div class="color" style="background:#F4C430" data-name="Azafrán"></div>
-      <!-- Duraznos -->
-      <div class="color" style="background:#F0805A" data-name="Coral anaranjado"></div>
-      <div class="color" style="background:#F88379" data-name="Salmón profundo"></div>
-      <!-- Rojos tierra -->
-      <div class="color" style="background:#C1440E" data-name="Ladrillo"></div>
-      <div class="color" style="background:#B7410E" data-name="Teja"></div>
-      <div class="color" style="background:#801818" data-name="Óxido rojo"></div>
-      <div class="color" style="background:#FF6F61" data-name="Coral quemado"></div>
-      <!-- Azules apagados -->
-      <div class="color" style="background:#274472" data-name="Azul petróleo"></div>
-      <div class="color" style="background:#3B5998" data-name="Azul denim cálido"></div>
-      <!-- Morados apagados -->
-      <div class="color" style="background:#5D3A3A" data-name="Borgoña"></div>
-      <div class="color" style="background:#4B2E2E" data-name="Berenjena"></div>
-      <div class="color" style="background:#6E1414" data-name="Vino tinto"></div>
-      <!-- Neutros cálidos -->
-      <div class="color" style="background:#E4C9B0" data-name="Beige dorado"></div>
-      <div class="color" style="background:#C19A6B" data-name="Camel"></div>
-      <div class="color" style="background:#A89F91" data-name="Marrón topo"></div>
-      <div class="color" style="background:#FBE8D3" data-name="Hueso cálido"></div>
-    </div>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palette</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background-color: #fff9f1;
+        color: #333;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+      .palette-section {
+        margin: 3rem auto;
+        max-width: 1000px;
+      }
+      .circle-palette-best {
+        position: relative;
+        margin: 2rem auto;
+        width: 700px;
+        height: 700px;
+      }
+      .circle-palette-worst {
+        position: relative;
+        margin: 2rem auto;
+        width: 300px;
+        height: 300px;
+      }
+      .circle-palette .color {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+      .tooltip {
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        border-radius: 5px;
+        pointer-events: none;
+        white-space: nowrap;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>True Autumn</h1>
+    <h1>🎨 🍁</h1>
 
-  <h1>Colores a evitar</h1>
-  <div class="palette-section">
-    <div class="circle">
-      <div class="color" style="background:#ADD8E6" data-name="Celeste (frío)"></div>
-      <div class="color" style="background:#E6E6FA" data-name="Lavanda"></div>
-      <div class="color" style="background:#FFB6C1" data-name="Rosa chicle"></div>
-      <div class="color" style="background:#E0FFFF" data-name="Verde menta"></div>
-      <div class="color" style="background:#000000" data-name="Negro puro"></div>
-      <div class="color" style="background:#FFFFFF" data-name="Blanco óptico"></div>
-      <div class="color" style="background:#FF00FF" data-name="Fucsia neón"></div>
-      <div class="color" style="background:#39FF14" data-name="Verde fosforescente"></div>
+    <div class="palette-section">
+      <h2>✅ Colores que te favorecen</h2>
+      <div class="circle-palette circle-palette-best" id="best-colors"></div>
     </div>
-  </div>
-</body>
+
+    <div class="palette-section">
+      <h2>🚫 Colores que debés evitar</h2>
+      <div class="circle-palette circle-palette-worst" id="worst-colors"></div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+      const bestColors = [
+        // Rojos
+        { name: "Óxido rojo", hex: "#801818" },
+        { name: "Vino tinto", hex: "#6e1414" },
+        { name: "Borgoña", hex: "#5d3a3a" },
+        { name: "Berenjena", hex: "#4b2e2e" },
+        { name: "Ladrillo", hex: "#c1440e" },
+        { name: "Teja", hex: "#b7410e" },
+
+        // Naranjas / Coral / Duraznos
+        { name: "Coral anaranjado", hex: "#f0805a" },
+        { name: "Coral quemado", hex: "#ff6f61" },
+        { name: "Salmón profundo", hex: "#f88379" },
+        { name: "Terracota", hex: "#964b00" },
+        { name: "Cobre", hex: "#b87333" },
+        { name: "Bronce", hex: "#cd7f32" },
+
+        // Amarillos
+        { name: "Mostaza", hex: "#e1ad01" },
+        { name: "Azafrán", hex: "#f4c430" },
+        { name: "Dorado", hex: "#d4af37" },
+        { name: "Verde dorado", hex: "#9c8b3f" },
+
+        // Verdes
+        { name: "Oliva", hex: "#6b8e23" },
+        { name: "Musgo", hex: "#556b2f" },
+
+        // Azules
+        { name: "Azul petróleo", hex: "#274472" },
+        { name: "Azul denim cálido", hex: "#3b5998" },
+
+        // Violetas y morados ya incluidos más arriba como rojos oscuros
+
+        // Neutros y marrones
+        { name: "Óxido", hex: "#7c482b" },
+        { name: "Marrón cálido", hex: "#5a3a22" },
+        { name: "Chocolate", hex: "#6a4e42" },
+        { name: "Camel", hex: "#c19a6b" },
+        { name: "Beige dorado", hex: "#e4c9b0" },
+        { name: "Marrón topo", hex: "#a89f91" },
+        { name: "Hueso cálido", hex: "#fbe8d3" },
+      ];
+
+      const worstColors = [
+        // Rosados / Rojizos
+        { name: "Rosa chicle", hex: "#ffb6c1" },
+        { name: "Fucsia neón", hex: "#ff00ff" },
+
+        // Violetas
+        { name: "Lavanda", hex: "#e6e6fa" },
+
+        // Azules
+        { name: "Celeste (frío)", hex: "#add8e6" },
+
+        // Verdes
+        { name: "Verde menta", hex: "#e0ffff" },
+        { name: "Verde fosforescente", hex: "#39ff14" },
+
+        // Neutros extremos
+        { name: "Negro puro", hex: "#000000" },
+        { name: "Blanco óptico", hex: "#ffffff" },
+      ];
+
+      const placeColorsInCircle = (colors, containerId) => {
+        const container = document.getElementById(containerId);
+        const tooltip = document.getElementById("tooltip");
+        var radius;
+        var centerX;
+        var centerY;
+
+        if (containerId == "best-colors") {
+          radius = 300;
+          centerX = 350;
+          centerY = 350;
+        } else {
+          radius = 100;
+          centerX = 150;
+          centerY = 150;
+        }
+
+        const total = colors.length;
+
+        colors.forEach((color, i) => {
+          const angle = (i / total) * 2 * Math.PI;
+          const x = centerX + radius * Math.cos(angle) - 30;
+          const y = centerY + radius * Math.sin(angle) - 30;
+
+          const div = document.createElement("div");
+          div.className = "color";
+          div.style.backgroundColor = color.hex;
+          div.style.left = `${x}px`;
+          div.style.top = `${y}px`;
+
+          div.addEventListener("mouseenter", () => {
+            tooltip.innerText = color.name;
+            tooltip.style.display = "block";
+          });
+
+          div.addEventListener("mousemove", (e) => {
+            tooltip.style.left = `${e.pageX + 10}px`;
+            tooltip.style.top = `${e.pageY + 10}px`;
+          });
+
+          div.addEventListener("mouseleave", () => {
+            tooltip.style.display = "none";
+          });
+
+          container.appendChild(div);
+        });
+      };
+
+      placeColorsInCircle(bestColors, "best-colors");
+      placeColorsInCircle(worstColors, "worst-colors");
+    </script>
+  </body>
 </html>
