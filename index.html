@@ -69,43 +69,44 @@
       <div class="circle-palette circle-palette-worst" id="worst-colors"></div>
     </div>
 
+    <h1>Soft Summer</h1>
+    <h1>🎨 🌫️</h1>
+
+    <div class="palette-section">
+      <h2>✅ Colores que te favorecen</h2>
+      <div class="circle-palette circle-palette-best" id="best-colors-soft"></div>
+    </div>
+
+    <div class="palette-section">
+      <h2>🚫 Colores que debés evitar</h2>
+      <div class="circle-palette circle-palette-worst" id="worst-colors-soft"></div>
+    </div>
+
     <div class="tooltip" id="tooltip"></div>
 
     <script>
       const bestColors = [
-        // Rojos
+        // ... (los colores de True Autumn, sin cambios)
         { name: "Óxido rojo", hex: "#801818" },
         { name: "Vino tinto", hex: "#6e1414" },
         { name: "Borgoña", hex: "#5d3a3a" },
         { name: "Berenjena", hex: "#4b2e2e" },
         { name: "Ladrillo", hex: "#c1440e" },
         { name: "Teja", hex: "#b7410e" },
-
-        // Naranjas / Coral / Duraznos
         { name: "Coral anaranjado", hex: "#f0805a" },
         { name: "Coral quemado", hex: "#ff6f61" },
         { name: "Salmón profundo", hex: "#f88379" },
         { name: "Terracota", hex: "#964b00" },
         { name: "Cobre", hex: "#b87333" },
         { name: "Bronce", hex: "#cd7f32" },
-
-        // Amarillos
         { name: "Mostaza", hex: "#e1ad01" },
         { name: "Azafrán", hex: "#f4c430" },
         { name: "Dorado", hex: "#d4af37" },
         { name: "Verde dorado", hex: "#9c8b3f" },
-
-        // Verdes
         { name: "Oliva", hex: "#6b8e23" },
         { name: "Musgo", hex: "#556b2f" },
-
-        // Azules
         { name: "Azul petróleo", hex: "#274472" },
         { name: "Azul denim cálido", hex: "#3b5998" },
-
-        // Violetas y morados ya incluidos más arriba como rojos oscuros
-
-        // Neutros y marrones
         { name: "Óxido", hex: "#7c482b" },
         { name: "Marrón cálido", hex: "#5a3a22" },
         { name: "Chocolate", hex: "#6a4e42" },
@@ -116,33 +117,54 @@
       ];
 
       const worstColors = [
-        // Rosados / Rojizos
         { name: "Rosa chicle", hex: "#ffb6c1" },
         { name: "Fucsia neón", hex: "#ff00ff" },
-
-        // Violetas
         { name: "Lavanda", hex: "#e6e6fa" },
-
-        // Azules
         { name: "Celeste (frío)", hex: "#add8e6" },
-
-        // Verdes
         { name: "Verde menta", hex: "#e0ffff" },
         { name: "Verde fosforescente", hex: "#39ff14" },
-
-        // Neutros extremos
         { name: "Negro puro", hex: "#000000" },
         { name: "Blanco óptico", hex: "#ffffff" },
+      ];
+
+      const bestColorsSoftSummer = [
+        { name: "Gris topo", hex: "#C3BEB4" },
+        { name: "Gris humo", hex: "#9DA3A6" },
+        { name: "Taupe suave", hex: "#B9AA9F" },
+        { name: "Beige grisáceo", hex: "#E1DAD1" },
+        { name: "Rosa palo", hex: "#C9A9A6" },
+        { name: "Malva", hex: "#9F7D90" },
+        { name: "Verde agua", hex: "#A2B4B3" },
+        { name: "Azul verdoso suave", hex: "#7A9EA5" },
+        { name: "Ciruela suave", hex: "#675C63" },
+        { name: "Gris azulado", hex: "#627178" },
+        { name: "Verde musgo", hex: "#586F6B" },
+        { name: "Azul acero", hex: "#4D5D6E" },
+        { name: "Lavanda apagado", hex: "#B4A6C4" },
+        { name: "Azul niebla", hex: "#A3B2BD" },
+        { name: "Azul pizarra", hex: "#6C7A89" },
+        { name: "Rosa empolvado", hex: "#D8A39D" },
+        { name: "Mauve grisáceo", hex: "#B79CA4" },
+        { name: "Arena fría", hex: "#D6CFC7" },
+      ];
+
+      const worstColorsSoftSummer = [
+        { name: "Negro puro", hex: "#000000" },
+        { name: "Blanco óptico", hex: "#ffffff" },
+        { name: "Amarillo oro", hex: "#FFD700" },
+        { name: "Naranja fuerte", hex: "#FF4500" },
+        { name: "Cian brillante", hex: "#00FFFF" },
+        { name: "Fucsia neón", hex: "#FF00FF" },
+        { name: "Verde neón", hex: "#39FF14" },
+        { name: "Coral cálido", hex: "#FF7F50" },
       ];
 
       const placeColorsInCircle = (colors, containerId) => {
         const container = document.getElementById(containerId);
         const tooltip = document.getElementById("tooltip");
-        var radius;
-        var centerX;
-        var centerY;
+        let radius, centerX, centerY;
 
-        if (containerId == "best-colors") {
+        if (containerId.includes("best")) {
           radius = 300;
           centerX = 350;
           centerY = 350;
@@ -185,6 +207,8 @@
 
       placeColorsInCircle(bestColors, "best-colors");
       placeColorsInCircle(worstColors, "worst-colors");
+      placeColorsInCircle(bestColorsSoftSummer, "best-colors-soft");
+      placeColorsInCircle(worstColorsSoftSummer, "worst-colors-soft");
     </script>
   </body>
 </html>
